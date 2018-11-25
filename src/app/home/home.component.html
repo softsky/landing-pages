@@ -24,21 +24,44 @@
           <img class="city-2" src="/assets/img/style-2/city-2.png" alt=""/>
           <span class="window-1"></span>
           <span class="window-2"></span>
-          <article class="margin-top-50 cold-left-top">
+          <article class="margin-top-50 cold-left-top" [hidden]="subscribed">
             <h1 class="h1" translate>Coming soon</h1>
             <h2 class="h2" translate>our website in under construction</h2>
           </article>
-          <div class="date margin-top-30">
+          <div class="date margin-top-30" [hidden]="subscribed">
             <div class="clock"></div>
 	          <div class="message"></div>
             <form id="contacts_form" class="margin-top-50">
-              <input type="text" id="mail" name="email" placeholder="{{ 'Enter your email' | translate }}" value=""/>
-              <div class="submit-button"><input type="submit" value="{{ 'Subscribe' | translate}}"/></div>
+              <input type="text" id="mail" name="email" placeholder="{{ 'Enter your email' | translate }}" value="" [formControl]="emailForm.controls.email" #email/>
+              <div class="submit-button"><input type="submit" value="{{ 'Subscribe' | translate }}" (click)="subscribe()" [disabled]="emailForm.controls.email.invalid"/></div>
+              <div class="extra-small margin-top-20" translate>
+                {{ 'By clicking' | translate}} [{{ 'Subscribe' | translate }}] {{ 'I agree to' | translate }} <a href="/terms-of-service" translate>Terms of Service</a> and <a href="/privacy-policy" translate>Privacy Policy</a></div>
             </form>
           </div>
+          <br/>
+          <article class="margin-top-20" [hidden]="!subscribed">
+            <h2 class="h2 margin-top-10" style="text-align:left" translate>What we offer</h2>
+            <h6 class="h7 margin-top-10" translate>We're offering <a href='https://uk.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BC%D0%BD%D0%B0_%D0%BC%D0%B5%D1%80%D0%B5%D0%B6%D0%B0'>DarkWeb</a> {{ 'We discover' | translate }}</h6>
+          </article>
+
+          <article class="margin-top-10" [hidden]="!subscribed">
+            <h2 class="h2 margin-top-10" style="text-align:left" translate>Get discount now</h2>
+            <h6 class="h7 margin-top-10" translate>We believe that</h6>
+            <h2 class="h2 margin-top-10" style="text-align:left" translate>Simple steps</h2>
+            <input class="margin-top-10 nice-btn" type="button" (click)="notify()" value="{{ 'Notify affected users' | translate }}"/>
+            <form class="margin-top-10" method="POST" accept-charset="utf-8" action="https://www.liqpay.ua/api/3/checkout" ngNoForm>
+	            <input type="hidden" name="data" value="eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJzdWJzY3JpYmUiLCJwdWJsaWNfa2V5IjoiaTEyNjY3MzUxMDM4IiwiYW1vdW50IjoiMzc1IiwiY3VycmVuY3kiOiJVQUgiLCJkZXNjcmlwdGlvbiI6ItCg0ZbRh9C90LAg0L/RltC00L/QuNGB0LrQsCDQvdCwINGB0LXRgNCy0ZbRgSDQvdC+0YLQuNGE0ZbQutCw0YbRltC5IiwidHlwZSI6ImJ1eSIsImxhbmd1YWdlIjoicnUiLCJzdWJzY3JpYmUiOjEsInN1YnNjcmliZV9kYXRlX3N0YXJ0Ijoibm93Iiwic3Vic2NyaWJlX3BlcmlvZGljaXR5IjoieWVhciJ9" />
+	            <input type="hidden" name="signature" value="W/RAbxuz2x60e+6vlQ9PAuHBVzM=" />
+	            <button class="nice-btn" onmouseover="this.style.opacity='0.5';" onmouseout="this.style.opacity='1';">
+		            <img src="https://static.liqpay.ua/buttons/logo-small.png" name="btn_text"
+			               style="margin-right: 7px !important; vertical-align: middle !important;"/>
+		            <span style="vertical-align:middle; !important" translate>Pay with LiqPay</span>
+	            </button>
+            </form>
+          </article>
         </div>
-        <div class="col-md-6 col-td cold-right">
-          <div class="tree-wrap">
+        <div class="col-md-6 col-td cold-right" style="pointer-events: none;">
+          <div class="tree-wrap" style="pointer-events: none;">
             <img class="moon" src="/assets/img/style-2/moon.png" alt=""/>
             <img class="tree" src="/assets/img/style-2/tree.png" alt=""/>
             <img class="tree-1" src="/assets/img/style-2/tree-1.png" alt=""/>
@@ -52,17 +75,15 @@
         </div>
       </div>
     </div>
-
-
     <footer>
       <div class="container margin-bottom-40">
         <div class="row">
           <div class="col-md-6">
             <div class="footer-linck" translate>
-              Contact us: <a href="tel:{{ 'PHONE_NUMBER' | translate }}"><span translate>PHONE_NUMBER</span></a>
+              Email: <a href="mailto:{{ 'EMAIL_ADDRESS' | translate }}"><span translate>EMAIL_ADDRESS</span></a>
             </div>
             <div class="footer-linck" translate>
-              Email: <a href="mailto:{{ 'EMAIL_ADDRESS' | translate }}"><span translate>EMAIL_ADDRESS</span></a>
+              Contact us: <a href="tel:{{ 'PHONE_NUMBER' | translate }}"><span translate>PHONE_NUMBER</span></a>
             </div>
           </div>
           <div class="col-md-6">
@@ -70,11 +91,11 @@
               <div class="titel" translate>
                 Follow Us
               </div>
-              <a class="thumbs" href="#"><i class="fa fa-pinterest-p"></i></a>
-              <a class="thumbs" href="#"><i class="fa fa-twitter"></i></a>
-              <a class="thumbs" href="#"><i class="fa fa-instagram"></i></a>
-              <a class="thumbs" href="#"><i class="fa fa-google-plus"></i></a>
-              <a class="thumbs" href="#"><i class="fa fa-facebook"></i></a>
+              <!-- <a class="thumbs" href="#"><i class="fa fa-pinterest-p"></i></a> -->
+              <a class="thumbs" href="https://www.twitter.com"><i class="fa fa-twitter"></i></a>
+              <a class="thumbs" href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+              <!-- <a class="thumbs" href="#"><i class="fa fa-google-plus"></i></a> -->
+              <a class="thumbs" href="https://www.facebook.com"><i class="fa fa-facebook"></i></a>
             </div>
           </div>
         </div>
@@ -116,8 +137,8 @@
                 </div>
                 <div class="content">
                   <div class="simple-article">
-                    <h5><b translate>What do we offer</b></h5>
-                    <p translate>We offer following products</p>
+                    <h5><b translate>What we offer</b></h5>
+                    <p translate>We're offering <a href='https://uk.wikipedia.org/wiki/%D0%A2%D0%B5%D0%BC%D0%BD%D0%B0_%D0%BC%D0%B5%D1%80%D0%B5%D0%B6%D0%B0'>DarkWeb</a> {{ 'We discover' | translate }}</p>
                   </div>
                 </div>
               </div>
@@ -193,7 +214,7 @@
       <div class="article-header">
         <article class="simple-article">
           <h1 translate>Contact Us</h1>
-          <h4 translate>We would be glad to get touch with you</h4>
+          <h4 translate>We would be glad to get in touch with you</h4>
         </article>
       </div>
       <div class="row">
@@ -201,9 +222,9 @@
           <div class="text-center">
             <div class="contact-title" translate>Contact Us Today</div>
             <br/>
-            <a class="contact-phone" href="tel:{{'PHONE_NUMBER' | translate}}"><span translate>PHONE_NUMBER</span></a>
-            <br/>
             <a class="contact-mail" href="mailto:{{'EMAIL_ADDRESS' | translate}}"><span>EMAIL_ADDRESS</span></a>
+            <br/>
+            <a class="contact-phone" href="tel:{{'PHONE_NUMBER' | translate}}"><span translate>PHONE_NUMBER</span></a>
             <div class="contact-icons">
               <a href="#" style="background: #d44132;"><i class="fa fa-google-plus"></i></a>
               <a href="#" style="background: #4a66a0;"><i class="fa fa-facebook"></i></a>
@@ -282,7 +303,7 @@
   </div>
 </div>
 
-<div class="full-screen-popup light-text" id="thank-you-subscribe">
+<div class="full-screen-popup light-text" id="thank-you-subscribe" [hidden]="!subscribed">
   <div class="close-layer"></div>
   <div class="simple-article center-align">
     <a class="close-button">+</a>

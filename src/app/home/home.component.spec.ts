@@ -6,7 +6,7 @@ import { Angulartics2Module } from 'angulartics2';
 import { CoreModule } from '@app/core';
 import { SharedModule } from '@app/shared';
 import { HomeComponent } from './home.component';
-import { QuoteService } from './quote.service';
+import { QueueService } from '../common/queue.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -22,7 +22,7 @@ describe('HomeComponent', () => {
           HttpClientTestingModule
         ],
         declarations: [HomeComponent],
-        providers: [QuoteService]
+        providers: [QueueService]
       })
       .compileComponents();
   }));
