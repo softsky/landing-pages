@@ -7,11 +7,15 @@
 @import "theme/theme-variables";
 
 // 3rd party libraries
-@import "~bootstrap/scss/bootstrap";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss";
-@import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
+// @import "~bootstrap/scss/bootstrap";
+// @import "~@fortawesome/fontawesome-free-webfonts/scss/fontawesome.scss";
+// @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-brands.scss";
+// @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-regular.scss";
+// @import "~@fortawesome/fontawesome-free-webfonts/scss/fa-solid.scss";
+
+@import "assets/css/bootstrap.min.css";
+@import "assets/css/flipclock.css";
+@import "assets/css/font-awesome.min.css";
 
 // Theme customization
 @import "theme/theme";
