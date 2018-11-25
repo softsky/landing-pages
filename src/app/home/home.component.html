@@ -32,8 +32,8 @@
             <div class="clock"></div>
 	          <div class="message"></div>
             <form id="contacts_form" class="margin-top-50">
-              <input type="text" id="mail" name="email" placeholder="Enter your email" value=""/>
-              <div class="submit-button"><input type="submit" value="Subscribe"/></div>
+              <input type="text" id="mail" name="email" placeholder="{{ 'Enter your email' | translate }}" value=""/>
+              <div class="submit-button"><input type="submit" value="{{ 'Subscribe' | translate}}"/></div>
             </form>
           </div>
         </div>
@@ -59,10 +59,10 @@
         <div class="row">
           <div class="col-md-6">
             <div class="footer-linck" translate>
-              Contact us: <a href="tel:43475558974253"><span translate>PHONE_NUMBER</span></a>
+              Contact us: <a href="tel:{{ 'PHONE_NUMBER' | translate }}"><span translate>PHONE_NUMBER</span></a>
             </div>
             <div class="footer-linck" translate>
-              Email: <a href="mailto:coming_soon@mail.com"><span translate>EMAIL_ADDRESS</span></a>
+              Email: <a href="mailto:{{ 'EMAIL_ADDRESS' | translate }}"><span translate>EMAIL_ADDRESS</span></a>
             </div>
           </div>
           <div class="col-md-6">
