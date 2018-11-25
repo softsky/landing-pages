@@ -1098,15 +1098,16 @@ header.active .menu-button span:nth-child(4){opacity: 0;}
         .block.coming-soon-style3 .h2{font-size: 14px;}
         .block.coming-soon-style3 .clock{transform: scale(0.65); -webkit-transform: scale(0.65); -moz-transform: scale(0.65); -o-transform: scale(0.65); -ms-transform: scale(0.65);}
         .block.coming-soon-style3 #contacts_form{width: 340px;}
-        .cold-right{left: -550px;opacity:0.8}
     }
     @media (max-width: 374px) {
         .block.coming-soon-style3 .h1{font-size: 37px;}
         .block.coming-soon-style3 .h2{font-size: 12px;}
         .block.coming-soon-style3 .clock{transform: scale(0.529); -webkit-transform: scale(0.529); -moz-transform: scale(0.529); -o-transform: scale(0.529); -ms-transform: scale(0.529);}
         .block.coming-soon-style3 #contacts_form{width: 290px; margin-top: -10px;}
-        .tree{z-index:-10}
-
+        .cold-right{left: -500px;opacity:0.7}
+        .h2, .h6 {
+          width: 300px;
+        }
     }
 
 /*-------------------------------------------------------------------------------------------------------------------------------*/
